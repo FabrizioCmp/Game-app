@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Snake</title>
-    @vite(['resources/css/style.css','resources/js/main.js'])
-</head>
+    @vite(['resources/scss/app.scss','resources/js/main.js','resources/js/app.js'])
+</head> --}}
+@extends("layouts.app")
+@section("content")
+    
 <body>
-
     <h1 class="title_game">Snake</h1>
     <canvas id="board">
         
@@ -20,4 +22,6 @@
     </div>
     
 </body>
-</html>
+
+@endsection
+
