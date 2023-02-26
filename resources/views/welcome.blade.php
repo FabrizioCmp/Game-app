@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="walcomePage">
+    <div class="walcomePage bkg_gradient">
         <div class="container py-4 ">
             <h1 style="font-size: 150px" class="lh-1">Hi!</h1>
             <h2 class="">Welcome to your favorite game!</h2>

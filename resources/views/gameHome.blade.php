@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <body>
+    <div class="bkg_gradient vh-100 py-3">
         <h1 class="title_game">Snake</h1>
 
         <canvas id="board">
@@ -13,5 +13,5 @@
              <span id="score"></span>
         </div>
 
-    </body>
+    </div>
 @endsection

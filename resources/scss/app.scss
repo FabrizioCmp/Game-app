@@ -33,11 +33,13 @@
 }
 
 .walcomePage{
-    background: rgb(152,251,103);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(152,251,103,1) 38%, rgba(25,135,84,1) 100%);
     height: 100vh;
     color: white;
     text-shadow: 1px 1px black;
+}
+.bkg_gradient{
+    background: rgb(152,251,103);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(152,251,103,1) 38%, rgba(25,135,84,1) 100%);
 }
 
 
