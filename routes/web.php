@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/game', function(){
     return view("gameHome");
 });
+
+Route::middleware('auth','verified')
+    ->prefix("admin")
+    ->name("admin.")
+    ->group(function(){
+        Route::get("/game", [UserController::class, "game"])->name("game");
+        Route::get("/profile", [UserController::class, "profile"])->name("profile");
+    });
 
 require __DIR__.'/auth.php';

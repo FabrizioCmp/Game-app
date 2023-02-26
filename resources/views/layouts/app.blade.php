@@ -17,6 +17,7 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js','resources/js/main.js'])
+    @yield('vite')
 </head>
 
 <body>
