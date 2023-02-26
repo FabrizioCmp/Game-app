@@ -5,8 +5,9 @@ const columns = 30;
 const square = 25;
 let board = null;
 let canvas = null;
-let gameOver = false
+let gameOver = false;
 let score = 0;
+let gameStarted = false;
 
 
 //snake
@@ -29,10 +30,20 @@ let foodY = square * 18;
 window.onload = function () {
     createBoard();
     document.addEventListener("keydown", changeDirectionSnake);
+    document.addEventListener("keydown", (e) => {
+        
+        if ((e.code === "ArrowDown" || e.code === "ArrowUp" || e.code === "ArrowLeft" || e.code === "ArrowRight") && !gameStarted ) {
+            gameStarted = true;
+            console.log("hey");
+            placeBanner();
+        }
 
-    setInterval(updateBoard, 80);
-    foodPlacement();
-    updateScore();
+    })
+
+setInterval(updateBoard, 80);
+foodPlacement();
+updateScore();
+
 }
 
 
@@ -51,7 +62,7 @@ function createBoard() {
 
 function updateBoard() {
 
-    if(gameOver){
+    if (gameOver) {
         return;
     }
 
@@ -63,12 +74,12 @@ function updateBoard() {
     canvas.fillStyle = "red";
     canvas.fillRect(foodX, foodY, square, square);
 
-  
-    
+
+
     for (let i = snakeBody.length - 1; i > 0; i--) {
         snakeBody[i] = snakeBody[i - 1];
     }
-    
+
     if (snakeBody.length) {
         snakeBody[0] = [snakeHeadX, snakeHeadY];
     }
@@ -85,6 +96,16 @@ function updateBoard() {
     snakeEatFood();
 }
 
+function placeBanner() {
+    let bunnerEl = document.getElementById("start_banner");
+    console.log(bunnerEl);
+    // if (gameStarted) {
+    //     bunnerEl.classList.add("invisible");
+    // } else if(!gameStarted){
+    //     bunnerEl.classList.add("invisible");
+    // }
+    (gameStarted) ? bunnerEl.classList.add("invisible"): bunnerEl.classList.toggle("invisible");
+}
 
 function foodPlacement() {
 
@@ -124,29 +145,31 @@ function snakeEatFood() {
 
 function checkGameOver() {
     for (let i = 0; i < snakeBody.length; i++) {
-        if(snakeHeadX === snakeBody[i][0] && snakeHeadY === snakeBody[i][1]){
+        if (snakeHeadX === snakeBody[i][0] && snakeHeadY === snakeBody[i][1]) {
             gameOver = true;
             score = 0;
+            gameStarted = false;
+            placeBanner();
         }
-    } 
+    }
 }
 
-function updateScore(){
+function updateScore() {
     let scoreEl = document.getElementById("score");
-    scoreEl.innerHTML= score
+    scoreEl.innerHTML = score
 }
 
-function onBorders(){
-    if(snakeHeadX == -square && currentDirection === "left" ){
+function onBorders() {
+    if (snakeHeadX == -square && currentDirection === "left") {
         snakeHeadX = square * columns;
     }
-    if(snakeHeadX == square * columns && currentDirection === "right"){
+    if (snakeHeadX == square * columns && currentDirection === "right") {
         snakeHeadX = 0
     }
-    if(snakeHeadY == -square && currentDirection == "up"){
+    if (snakeHeadY == -square && currentDirection == "up") {
         snakeHeadY = square * rows;
     }
-    if(snakeHeadY == square * rows && currentDirection === "down"){
+    if (snakeHeadY == square * rows && currentDirection === "down") {
         snakeHeadY = 0;
     }
 }
