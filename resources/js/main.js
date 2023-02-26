@@ -40,7 +40,8 @@ window.onload = function () {
 
     })
 
-setInterval(updateBoard, 80);
+let updateBoardInterval = setInterval(updateBoard, 80);
+
 foodPlacement();
 updateScore();
 
@@ -63,7 +64,9 @@ function createBoard() {
 function updateBoard() {
 
     if (gameOver) {
-        return;
+        const btnNewGameEl = document.getElementById("btn_restart");
+        btnNewGameEl.classList.remove("d-none");
+        return;   
     }
 
     //draw the black part of the board
@@ -99,12 +102,7 @@ function updateBoard() {
 function placeBanner() {
     let bunnerEl = document.getElementById("start_banner");
     console.log(bunnerEl);
-    // if (gameStarted) {
-    //     bunnerEl.classList.add("invisible");
-    // } else if(!gameStarted){
-    //     bunnerEl.classList.add("invisible");
-    // }
-    (gameStarted) ? bunnerEl.classList.add("invisible"): bunnerEl.classList.toggle("invisible");
+    (gameStarted) ? bunnerEl.classList.add("invisible") : bunnerEl.classList.toggle("invisible");
 }
 
 function foodPlacement() {
