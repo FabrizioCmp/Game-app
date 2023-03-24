@@ -27,8 +27,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-success  ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        <img src="{{ url('/imgs/icons8-serpente-100.png')}}" alt="">
+                    <div style="width: 100px" class="">
+                        <img class="img-fluid" src="{{ url('/imgs/logo.png')}}" alt="">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
